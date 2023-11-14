@@ -38,7 +38,7 @@
   --mb-1-5: 1.5rem;
   --mb-2: 2rem;
   --mb-2-5: 2.5rem;
-  --mb-5: 5rem;
+  --mb-10: 10rem;
 
   /*========== z index ==========*/
   --z-tooltip: 10;
@@ -748,9 +748,18 @@ select {
 
 
 @media screen and (min-width: 1919px) {
-  .container, .home-section-container, .menu-container {
-    margin-left: var(--mb-5);
-    margin-right: var(--mb-5);
+  .home-data, .container, .home-section-container, .menu-hr-container, .menu-side-container{
+    margin-left: var(--mb-10);
+    margin-right: var(--mb-10);
+  }
+
+  .fullscreen-container{
+    padding-top: var(--mb-2);    
+    grid-template-columns: repeat(2, 500px);
+    justify-content: center;
+    align-items: center;
+    gap: 0rem;
+    
   }
 }
 
