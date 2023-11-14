@@ -65,11 +65,6 @@ function updateTotal() {
 
     var convertedVegosszeg = vegosszeg * currencyValues[selectedCurrency];
 
-
-    // document.getElementById("totalPrice").innerText = (selectedCurrency === 'huf') ?
-    // convertedVegosszeg + ' HUF' :
-    // convertedVegosszeg + ' ' + selectedCurrency;
-
     document.getElementById("totalPrice").innerText = (selectedCurrency === 'huf') ?
     convertedVegosszeg + ' HUF' :
     (selectedCurrency === 'rsd') ?
