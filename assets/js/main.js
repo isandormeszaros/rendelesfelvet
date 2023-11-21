@@ -14,38 +14,58 @@ $(document).ready(function () {
 });
 
 /*=============== CURRENCY ===============*/
-  $(document).ready(function() {
-    var currencyValues = {
-      'huf': '4500 Ft',
-      'eur': '10 EUR',
-      'rsd': '100 RSD'
-    };
-  
-    var currentCurrency = 'huf'; 
+$(document).ready(function() {
+    var currentCurrency = 'huf';
     updatePrices(currentCurrency);
-  
+
     $('.menu-button').on('click', function() {
-      var currency = $(this).text().toLowerCase();
-      updatePrices(currency);
+        var currency = $(this).text().toLowerCase();
+        updatePrices(currency);
+        updateTotal();
     });
-  
+
+    $('#currency').on('change', function() {
+        updateTotal();
+    });
+
     function updatePrices(currency) {
-      $('.menu-price span').hide();
-  
-      $('#price-' + currency).text(currencyValues[currency]).show();
-      currentCurrency = currency;
+        $('.menu-price span').hide();
+
+        var priceElement = $('#price-' + currency);
+        var currencySymbol = getCurrencySymbol(currency);
+        priceElement.text(currencyPrices[currency] + ' ' + currencySymbol).show();
+        currentCurrency = currency;
     }
-  });
+
+    function getCurrencySymbol(currency) {
+        switch (currency) {
+            case 'huf':
+                return 'Ft';
+            case 'eur':
+                return 'EUR';
+            case 'rsd':
+                return 'RSD';
+            default:
+                return ''; 
+        }
+    }
+});
+
+
   
 /*=============== POPUP ===============*/ 
 function showPopup() {
     var popup = document.getElementById('popup');
+    var overlay = document.getElementById('overlay');
     popup.classList.add('show');
+    overlay.classList.add('show');
   }
   
   document.getElementById('close-btn').addEventListener('click', function () {
     var popup = document.getElementById('popup');
+    var overlay = document.getElementById('overlay');
     popup.classList.remove('show');
+    overlay.classList.remove('show');
   });
 
 /*=============== VEGOSSZEG ===============*/ 
@@ -56,19 +76,8 @@ function updateTotal() {
 
     var vegosszeg = elsoMenu + masodikMenu + harmadikMenu;
 
-    var selectedCurrency = document.getElementById("currency").value; 
-    var currencyValues = {
-        'huf': 4500,
-        'eur': 10,
-        'rsd': 100
-    };
+    var selectedCurrency = document.getElementById("currency").value;
+    var convertedVegosszeg = vegosszeg * currencyPrices[selectedCurrency];
 
-    var convertedVegosszeg = vegosszeg * currencyValues[selectedCurrency];
-
-    document.getElementById("totalPrice").innerText = (selectedCurrency === 'huf') ?
-    convertedVegosszeg + ' HUF' :
-    (selectedCurrency === 'rsd') ?
-    convertedVegosszeg + ' RSD' :
-    convertedVegosszeg + ' EUR';
-
+    document.getElementById("totalPrice").innerText = convertedVegosszeg + ' ' + selectedCurrency.toUpperCase();
 }

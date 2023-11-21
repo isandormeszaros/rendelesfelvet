@@ -282,8 +282,6 @@ button {
 }
 
 .swiper {
-  width: 350px;
-  height: 200px;
   display: flex;
   border-radius: 15px;
   justify-content: center;
@@ -292,17 +290,19 @@ button {
 }
 
 .swiper-slide {
+  position: relative;
   text-align: center;
   font-size: 18px;
   background: var(--container-color);
   width: 100%;
   height: 100%;
 }
+
   .menu-img {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
     opacity: 0.9;
+    width: 100%; 
+    height: 100%;
   }
 
   .card-contents {
@@ -332,7 +332,7 @@ button {
 .popup {
   display: none;
   position: fixed;
-  max-height: 90vh;
+  max-height: 95vh;
   width: 300px;
   overflow-y: auto;
   z-index: 1;
@@ -341,20 +341,30 @@ button {
   transform: translate(-50%, -50%);
   background-color: var(--container-color); 
   padding: 20px;
+  border: 1px solid rgba(15, 15, 15, .5);
   border-radius: 5px;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-.popup.show {
+.popup.show{
   display: block;
   opacity: 1;
+}
+
+.overlay.show {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 9; 
 }
 
 label {
   display: block;
   font-weight: var(--font-regular);
-  padding-bottom: var(--mb-0-25);
 }
 
 input[type="text"],
@@ -403,10 +413,24 @@ select {
   display: flex;
   align-items: center;
   gap: 5px;
-}
+}s
 
 .total{
+  font-weight: var(--font-medium);
   padding-block: var(--mb-0-5) var(--mb-1-5);
+}
+
+.close-btn {
+  cursor: pointer;
+  font-size: var(--h1-font-size);
+  position: sticky;
+  top: 0;
+  right: 15px; 
+  z-index: 10; 
+}
+
+.close-btn:hover {
+  color: var(--first-color-alt);
 }
 
 
@@ -580,8 +604,9 @@ select {
   }
 
   .swiper-fullscreen{
-    width: 490px;
-    height: 300px;
+    
+    width: 100%;
+    height: 100%;
   }
 
   .home-section-container-fullscreen{
@@ -633,7 +658,7 @@ select {
 
   .swiper-fullscreen{
     width: 400px;
-    height: 500px;
+    height: 262px;
   }
 
   .home-section-container-fullscreen{
@@ -714,7 +739,7 @@ select {
 
   .swiper-fullscreen{
     width: 500px;
-    height: 600px;
+    height: 320px;
   }
 
   .home-section-container-fullscreen{

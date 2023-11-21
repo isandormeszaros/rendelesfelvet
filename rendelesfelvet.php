@@ -1,3 +1,11 @@
+<?php
+$currencyPrices = array(
+    'huf' => 4500,
+    'eur' => 10,
+    'rsd' => 100
+);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,21 +60,21 @@
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
                                         <div class="card-contents">
-                                            <img src="assets/images/etterem4.jpg" />
+                                            <img src="assets/images/etterem3.jpeg" />
                                             <div class="card-description">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="card-contents">
-                                            <img src="assets/images/etterem5.jpg" />
+                                            <img src="assets/images/etterem2.jpg" />
                                             <div class="card-description">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="card-contents">
-                                            <img src="assets/images/etterem6.jpg" />
+                                            <img src="assets/images/etterem1.jpg" />
                                             <div class="card-description">
                                             </div>
                                         </div>
@@ -214,96 +222,90 @@
                 </div>
                 <div class="menu-hr"></div>    
             </div>
-
-            
         </section>
 
-
-        <div class="booking-popup" id="bookingPopup">
-            <div class="booking-content">
-                <div id="popup" class="popup">
-                    <span class="close-btn" id="close-btn" style="cursor: pointer; float: right;">&times;</span>
-                    <div class="container">
-                        <form action="" id="foglaloFelForm">
-                            <h3 class="form-title">Foglalás</h3>
-                            <label for="">Foglaló fél neve</label>
-                            <input type="text" id="fname" name="fname" placeholder="Példa Péter" required>
-                            <label for="">Foglaló fél telefonszáma</label>
-                            <input type="number" id="telnumber" name="telnumber" placeholder="06 30 123 4567" required>
-                            <label for="">Foglaló fél személyi száma</label>
-                            <input type="number" id="szemelyiid" name="szemelyiid"
-                                placeholder="Foglaló fél személyi száma" required>
-                            <label for="">Foglaló fél születési dátuma</label>
-                            <input type="date" id="szulDatum" name="szulDatum" required>
-                        </form>
-
-                        <form action="" id="foglalasReszletei">
-                            <h3 class="form-title">Foglalás részletei</h3>
-                            <label>Foglalas dátuma</label>
-                            <input type="date" id="foglalasDatum" name="" required>
-                            <label>Foglalas időpontja</label>
-                            <select name="foglalasIdo" id="foglalasIdo" required>
-                                <option value="timeSlot1">11:30 - 13:00</option>
-                                <option value="timeSlot2">13:00 - 14:30</option>
-                                <option value="timeSlot3">18:00 - 19:30</option>
-                                <option value="timeSlot4">19:30 - 21:00</option>
-                            </select>
-
-                            <label>Pénznem</label>
-                            <select id="currency">
-                                <option value="huf">HUF</option>
-                                <option value="eur">EUR</option>
-                                <option value="rsd">RSD</option>
-                            </select>
-                            <label>Első menü száma</label><input type="number" name="" id="elsomenu" min="0"
-                                onchange="updateTotal()">
-                            <label>Második menü száma</label><input type="number" name="" id="masodikmenu" min="0"
-                                onchange="updateTotal()">
-                            <label>Harmadik menü száma</label><input type="number" name="" id="harmadikmenu" min="0"
-                                onchange="updateTotal()">
-                        </form>
-
-                        <form action="" id="foglalasFizetes">
-                            <div class="checkboxInput">
-                                <input type="checkbox" id="bankCardPayment" name="paymentMethod" value="BankCard">
-                                <label for="bankCardPayment">Helyszíni bankkártyás fizetés</label>
+        <!--==================== POPUP ====================-->
+        <div class="overlay" id="overlay">
+            <div class="booking-popup" id="bookingPopup">
+                <div class="booking-content">
+                    <div id="popup" class="popup">
+                        <span class="close-btn" id="close-btn" style="cursor: pointer; float: right;">&times;</span>
+                        <div class="container">
+                            <form action="" id="foglaloFelForm">
+                                <h3 class="form-title">Foglalás</h3>
+                                <label for="">Foglaló fél neve</label>
+                                <input type="text" id="fname" name="fname" placeholder="Példa Péter" required>
+                                <label for="">Foglaló fél telefonszáma</label>
+                                <input type="number" id="telnumber" name="telnumber" placeholder="06 30 123 4567" required>
+                                <label for="">Foglaló fél személyi száma</label>
+                                <input type="number" id="szemelyiid" name="szemelyiid"
+                                    placeholder="Foglaló fél személyi száma" required>
+                                <label for="">Foglaló fél születési dátuma</label>
+                                <input type="date" id="szulDatum" name="szulDatum" required>
+                                <label for="">Foglaló fél létszáma</label>
+                                <input type="number" id="foglalasFo" name="foglalasFo" required>
+                            </form>
+    
+                            <form action="" id="foglalasReszletei">
+                                <h3 class="form-title">Foglalás részletei</h3>
+                                <label>Foglalas dátuma</label>
+                                <input type="date" id="foglalasDatum" name="" required>
+                                <label>Foglalas időpontja</label>
+                                <select name="foglalasIdo" id="foglalasIdo" required>
+                                    <option value="timeSlot1">11:30 - 13:00</option>
+                                    <option value="timeSlot2">13:00 - 14:30</option>
+                                    <option value="timeSlot3">18:00 - 19:30</option>
+                                    <option value="timeSlot4">19:30 - 21:00</option>
+                                </select>
+    
+                                <label>Pénznem</label>
+                                <select id="currency">
+                                    <option value="huf">HUF</option>
+                                    <option value="eur">EUR</option>
+                                    <option value="rsd">RSD</option>
+                                </select>
+                                <label>Első menü száma</label><input type="number" name="" id="elsomenu" min="0"
+                                    onchange="updateTotal()">
+                                <label>Második menü száma</label><input type="number" name="" id="masodikmenu" min="0"
+                                    onchange="updateTotal()">
+                                <label>Harmadik menü száma</label><input type="number" name="" id="harmadikmenu" min="0"
+                                    onchange="updateTotal()">
+                            </form>
+    
+                            <form action="" id="foglalasFizetes">
+                                <div class="checkboxInput">
+                                    <input type="radio" id="bankCardPayment" name="paymentMethod" value="BankCard">
+                                    <label for="bankCardPayment">Helyszíni bankkártyás fizetés</label>
+                                </div>
+    
+                                <div class="checkboxInput">
+                                    <input type="radio" id="cashPayment" name="paymentMethod" value="Cash">
+                                    <label for="cashPayment">Helyszíni készpénzes fizetés</label>
+                                </div>
+    
+                                <div class="checkboxInput">
+                                    <input type="radio" id="onlinePayment" name="paymentMethod" value="Online">
+                                    <label for="onlinePayment">Online</label>
+                                </div>
+                            </form>
+                            <p class="total">Végösszeg: <span id="totalPrice"></span></p>
+                            <div style="text-align: center;">
+                                <button type="submit" class="button">Foglalás</button>
                             </div>
-
-                            <div class="checkboxInput">
-                                <input type="checkbox" id="cashPayment" name="paymentMethod" value="Cash">
-                                <label for="cashPayment">Helyszíni készpénzes fizetés</label>
-                            </div>
-
-                            <div class="checkboxInput">
-                                <input type="checkbox" id="onlinePayment" name="paymentMethod" value="Online">
-                                <label for="onlinePayment">Online</label>
-                            </div>
-                        </form>
-                        <p class="total">Végösszeg: <span id="totalPrice"></span></p>
-                        <div style="text-align: center;">
-                            <button type="submit" class="button">Foglalás</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        
 
 
     </main>
 
-
-    <section class="random section container" id="random">
-    </section>
-
-    <section class="random section container" id="random">
-    </section>
-
-    <section class="random section container" id="random">
-    </section>
-
-    <section class="random section container" id="random">
-    </section>
-
+    <!--=============== PHP ===============-->
+    <script type="text/javascript">
+        var currencyPrices = <?php echo json_encode($currencyPrices); ?>;
+    </script>
     <!--=============== AJAX KIT ===============-->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!--=============== JQUERY ===============-->
