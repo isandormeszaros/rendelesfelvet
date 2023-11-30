@@ -193,21 +193,22 @@ $currencyPrices3 = array(
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
                                         <div class="card-contents">
-                                            <img src="assets/images/etterem1.jpg" />
+                                            <!-- added swiper-image class -->
+                                            <img src="assets/images/etterem7.jpg" class="swiper-image"/>
                                             <div class="card-description">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="card-contents">
-                                            <img src="assets/images/etterem2.jpeg" />
+                                            <img src="assets/images/etterem6.jpg" class="swiper-image"/>
                                             <div class="card-description">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="card-contents">
-                                            <img src="assets/images/etterem2.jpeg" />
+                                            <img src="assets/images/etterem2.jpeg" class="swiper-image"/>
                                             <div class="card-description">
                                             </div>
                                         </div>
